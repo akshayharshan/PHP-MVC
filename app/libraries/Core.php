@@ -19,7 +19,9 @@
         // If exists, set as controller
         $this->currentController = ucwords($url[0]);
         // Unset 0 Index
-        unset($url[0]);
+        // unset($url[0]);
+        echo '<br>';
+        print_r($url);echo 'unset url';
       }
 
       // Require the controller
@@ -27,6 +29,24 @@
 
       // Instantiate controller class
       $this->currentController = new $this->currentController;
+
+      // second part of the url
+
+      if(isset($url[1])){
+
+        if(method_exists($this->currentController,$this->currentMethod)){
+
+          $this->currentMethod = $url;
+        }
+
+
+      }
+
+      $this->params = $url ? array_values($url):[];
+
+      print_r($url);
+      echo '<br>';
+      print_r($this->params);
     }
 
     public function getUrl(){
@@ -34,6 +54,8 @@
         $url = rtrim($_GET['url'], '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/', $url);
+        print_r($url) ; echo 'get url';
+        echo '<br>';
         return $url;
       }
     }

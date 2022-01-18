@@ -5,4 +5,9 @@ class Pages{
     {
         echo 'pages are loaded';
     }
+
+    public function index(){
+
+        echo 'hello index';
+    }
 } 
