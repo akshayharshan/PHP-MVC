@@ -6,8 +6,9 @@ class Pages{
         echo 'pages are loaded';
     }
 
-    public function index(){
+    public function index($id){
 
-        echo 'hello index';
+        print_r($id);
+        
     }
 } 
